@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+.butn {
+    display: block;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(218, 125, 125);
+    color: #fff;
+    padding: 5px;
+}
+.butn:hover {
+    background-color: rgb(240, 137, 137);
+}
+.userInfo {
+    display: flex;
+}
+.span {
+    color: #fff;
+    text-transform: uppercase;
+    margin-right: 20px;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.info {
+    margin-bottom: 10px;
+}

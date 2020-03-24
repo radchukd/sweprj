@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import s from '../css/EmailForm.module.css';
 import { withContext } from '../AppContext';
 
 const EmailForm = ({ email, sendEmail, deleteUser, setAlert }) => {
@@ -24,15 +25,17 @@ const EmailForm = ({ email, sendEmail, deleteUser, setAlert }) => {
 
   return (
     <>
-      <h6>
-        {email}
-        <span className="badge badge-secondary" data-toggle="modal" data-target="#emailForm">
-          Email
-        </span>
-        <span className="badge badge-secondary" value={email} onClick={e => handleClick()}>
-          Delete 
-        </span>
-      </h6>
+      <div className={s.descr}>
+        <span className={s.mail}> {email}</span>
+        <div className={s.actions}>
+          <span className={s.email} data-toggle="modal" data-target="#emailForm">
+            Email
+          </span>
+          <span className={s.del} value={email} onClick={e => handleClick()}>
+            Delete 
+          </span>
+        </div>
+      </div>
 
       <div className="modal fade" id="emailForm" tabIndex="-1" role="dialog" aria-labelledby="emailFormLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
@@ -53,7 +56,6 @@ const EmailForm = ({ email, sendEmail, deleteUser, setAlert }) => {
                   name="Subject"
                   required
                 />
-                <br />
                 <textarea
                   value={text}
                   onChange={e => setText(e.target.value)}
