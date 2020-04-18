@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withContext } from '../AppContext';
+import s from '../css/Dashboard.module.css';
 import EmailForm from './EmailForm';
 import AddUserForm from './AddUserForm';
 
@@ -28,17 +29,22 @@ const Dashboard = ({ logout, loadUsers }) => {
           {alert.text}
         </div>
       }
-      <br />
-      <AddUserForm setAlert={setAlert} />
-      Employees:
-      { users.map((user) => (
-        <div key={user.email}>
-          <EmailForm email={user.email} setAlert={setAlert} />
-          {Object.keys(user.profile).map(key => <div key={key}>{user.profile[key]}</div>)}
+      <button className={s.butn} onClick={logout}>Logout</button>
+
+      <div className={s.container}>
+        <AddUserForm setAlert={setAlert} />
+        <div className={s.userInfo}>
+          <span className={s.span}> Employees:</span> 
+          <div className={s.wrapper}>
+            { users.map((user) => (
+                <div className={s.info} key={user.email}>
+                  <EmailForm email={user.email} setAlert={setAlert} />
+                  {Object.keys(user.profile).map(key => <div key={key}>{user.profile[key]}</div>)}
+                </div>
+            ))}
+          </div> 
         </div>
-      ))
-      }
-      <button className='btn btn-secondary' onClick={logout}>Logout</button>
+      </div>
     </div>
   )
 }
