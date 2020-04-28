@@ -1,0 +1,19 @@
+.mail {
+    color: #000;
+    font-size: 17px;
+}
+.email {
+    margin-right: 9px;
+    color: rgb(97, 131, 77);
+    cursor: pointer;
+}
+.email:hover {
+    color: rgb(110, 168, 77);
+}
+.del {
+    color: rgb(139, 89, 89);
+    cursor: pointer;
+}
+.del:hover {
+    color: rgb(177, 96, 96);
+}
