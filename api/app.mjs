@@ -12,10 +12,11 @@ app.set('port', API_PORT);
 app.use('/api/', appRouter);
 
 if (API_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../build')));
+  const dirname = path.resolve();
+  app.use(express.static(path.resolve(dirname, 'build')));
 
   app.get('*', (_req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build/index.html'));
+    res.sendFile(path.resolve(dirname, 'build/index.html'));
   });
 }
 
@@ -31,7 +32,7 @@ mongoose.connect(MONGODB_URI, mongoOpts)
     app.listen(app.get('port'), () => {
       console.log(
         `App is running at http://localhost:${app.get('port')} `
-        + `in ${app.get('env')} mode\nPress CTRL-C to stop`
+        + `in ${API_ENV} mode\nPress CTRL-C to stop`
       );
     });
   })
