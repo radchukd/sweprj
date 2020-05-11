@@ -13,7 +13,7 @@ const Dashboard = ({ logout, loadUsers }) => {
       setAlert({ text: '', type: 'danger' });
       window.location.reload();
     }
-  }, 3000)
+  }, 1000)
 
   useEffect(() => {
     const load = async () => {

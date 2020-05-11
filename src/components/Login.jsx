@@ -13,7 +13,7 @@ const Login = ({ login }) => {
       setAlert({ text: '', type: 'danger' });
       window.location.reload();
     }
-  }, 3000)
+  }, 1000)
 
   const submitForm = (e) => {
     e.preventDefault();
