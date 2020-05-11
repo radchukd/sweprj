@@ -8,7 +8,6 @@ import { MONGODB_URI } from './secrets.mjs';
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('port', process.env.PORT || 5000);
 app.use('/api/', appRouter);
 
 if (process.env.NODE_ENV === 'production') {
@@ -29,12 +28,7 @@ const mongoOpts = {
 mongoose.connect(MONGODB_URI, mongoOpts)
   .then(() => {
     console.log('MongoDB is connected');
-    app.listen(app.get('port'), () => {
-      console.log(
-        `App is running at http://localhost:${app.get('port')} `
-        + `in ${API_ENV} mode\nPress CTRL-C to stop`
-      );
-    });
+    app.listen(process.env.PORT || 5000, () => console.log('OK\n'));
   })
   .catch((err) => {
     console.log(`MongoDB connection error: ${err}`);
