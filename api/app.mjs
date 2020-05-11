@@ -3,15 +3,15 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 import appRouter from './router.mjs';
-import { MONGODB_URI, API_ENV, API_PORT } from './secrets.mjs';
+import { MONGODB_URI } from './secrets.mjs';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('port', API_PORT);
+app.set('port', process.env.PORT || 5000);
 app.use('/api/', appRouter);
 
-if (API_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   const dirname = path.resolve();
   app.use(express.static(path.resolve(dirname, 'build')));
 
