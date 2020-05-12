@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "build": "react-scripts build",
-    "start": "node --experimental-modules api/app.mjs",
+    "start": "NODE_ENV=production node --experimental-modules api/app.mjs",
     "client:dev": "react-scripts start",
     "server:dev": "nodemon api/app.mjs"
   },
