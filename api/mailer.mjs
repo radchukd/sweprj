@@ -1,11 +1,18 @@
 import nodemailer from 'nodemailer';
-import { GMAIL_EMAIL, GMAIL_PASS } from './secrets.mjs';
+import {
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USER,
+  SMTP_PASS,
+  HR_EMAIL,
+} from './secrets.mjs';
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: SMTP_HOST,
+  port: SMTP_PORT,
   auth: {
-    user: GMAIL_EMAIL,
-    pass: GMAIL_PASS
+    user: SMTP_USER,
+    pass: SMTP_PASS,
   }
 });
 
@@ -36,10 +43,11 @@ const emails = {
 
 const mailService = (opts) => {
   const { to, type } = opts;
-  const { subject, text } = type ? emails[type](opts) : opts;
+  const email = emails[type]
+  const { subject, text } = email ? email(opts) : opts;
 
   return transporter.sendMail({
-    from: GMAIL_EMAIL,
+    from: HR_EMAIL,
     to,
     subject,
     text
